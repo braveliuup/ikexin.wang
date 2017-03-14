@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Use correct character set. -->
+  <meta charset="utf-8">
+  <!-- Tell IE to use the latest, best version (or Chrome Frame if pre-IE11). -->
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+  <!-- Make the application on mobile take up the full browser screen and disable user scaling. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <title>我们的故事</title>
+  <script src="Cesium/Cesium.js"></script>
+  <style>
+      @import url(Cesium/Widgets/widgets.css);
+      html, body, #cesiumContainer {
+          width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden;
+      }
+ 
+  </style>
+  
+</head>
+<body>
+  <div id="cesiumContainer">
+  </div>
+  <div id="toolbar1" ></div>
+  
+
+  <script>
+    var viewer ;
+	//读取story.xml
+        (function storyScene(){
+      Cesium.loadWithXhr({
+          url : 'data/story.xml',
+          responseType : 'document'
+      }).then(parseDom).otherwise(function(error) {
+          alert(error);      
+      });
+    })();
+    function parseDom(doc){
+      var nodes = doc.getElementsByTagName("Node");
+      /////////////////////////////////////////////////////
+      // 初始化地球
+      viewer = new Cesium.Viewer('cesiumContainer',{
+            animation:false,
+            timeline:true,
+            // imageryProvider : new Cesium.BingMapsImageryProvider({
+            //     url : '//dev.virtualearth.net',
+            //     mapStyle : Cesium.BingMapsStyle.AERIAL_WITH_LABELS
+            //   }),
+            // imageryProvider : new Cesium.OpenStreetMapImageryProvider({
+            //    url : '//a.tile.openstreetmap.org/'
+            // }),
+            imageryProvider: new Cesium.SingleTileImageryProvider({
+              url : 'Cesium/Assets/world_topo_bathy_200406_blend_3x1024x512.jpg'
+            }),
+            // scene3DOnly:true,
+            sceneModePicker:true,
+            navigationHelpButton:false,
+            //图片选择false
+            baseLayerPicker:false,
+            infoBox:true,
+            clock: new Cesium.Clock({
+               startTime : Cesium.JulianDate.fromIso8601(nodes[0].getAttribute("time")),
+               currentTime : Cesium.JulianDate.fromIso8601(nodes[0].getAttribute("time")),
+               stopTime : Cesium.JulianDate.fromIso8601(nodes[nodes.length - 1].getAttribute("time")),
+               clockRange : Cesium.ClockRange.LOOP_STOP,
+               clockStep : Cesium.ClockStep.SYSTEM_CLOCK_MULTIPLIER})
+          });
+        // var west = 73.66;
+        // var south = 3.86;
+        // var east = 135.05;
+        // var north = 53.55;
+        // var rectangle = Cesium.Rectangle.fromDegrees(west, south, east, north);
+        // viewer.camera.viewRectangle(rectangle);
+        viewer.camera.flyTo({
+          destination : Cesium.Cartesian3.fromDegrees(104.355, 28.705, 20000000.0)
+        });
+         viewer.timeline.addEventListener('settime', function(e){
+           // console.log(e.timeJulian.toLocaleString());
+           var entyid = e.timeJulian.toLocaleString().substr(0,10);
+           var selectEnty = viewer.entities.getById(entyid);
+           if(typeof selectEnty === "undefined")
+            return;
+           viewer.flyTo(selectEnty);
+           viewer.selectedEntity =selectEnty;
+         }, false);
+     //////////////////////////////////////////////////////
+     // 添加要素
+      for(var i = 0; i < nodes.length; i++){
+        var nodeDoc = nodes[i];
+        var obj = {};
+        obj.time = nodeDoc.getAttribute("time");
+        obj.place = nodeDoc.getAttribute("place");
+        obj.lon = Number(nodeDoc.getAttribute("lon"));
+        obj.lat = Number(nodeDoc.getAttribute("lat"));
+        obj.hgt = Number(nodeDoc.getAttribute("hgt"));
+        obj.thumb = nodeDoc.getAttribute("thumb");
+        obj.storys = new Array();
+        var storys = nodeDoc.getElementsByTagName("Story");
+        for (var j = 0; j < storys.length; j++) {
+            var storyDoc = storys[j];
+            obj.storys.push({
+              img:storyDoc.getAttribute("img"),
+              desc:storyDoc.getAttribute("desc")
+            })
+        }
+        var storyEntity = story(obj);
+        viewer.entities.add(storyEntity);
+      }
+      //初始化时间条
+     
+        //解析完成创建自动播放按钮
+        // createPlayBtn();
+        //默认自动播放
+      // document.getElementById('playBtn').click();
+    }
+
+    function story(obj){
+      var entity = new Cesium.Entity({
+        id:obj.time,
+        name:obj.time+" "+obj.place,
+        position: Cesium.Cartesian3.fromDegrees(obj.lon, obj.lat, obj.hgt),
+        billboard: {
+            image: obj.thumb
+        },
+        description:storySlider(obj.storys)
+      });
+      return entity;
+    }
+
+    function storySlider(storys){
+      var htmls ='<div id="descDiv">';
+      var imgdiv = "";
+      for(var i= 0; i < storys.length; i++){
+        imgdiv = "";
+        imgdiv += '<div style="width:100%;height:250px;margin:4px">'+
+        // '<img src="'+storys[i].img+'"  alt=""/>'+
+        '<img src="'+storys[i].img+'" style="width:100%;height:260px" alt=""/>'+
+        '<div style="position:relative;bottom:42; right:0; width:100%; height:42px; background-color:rgba(0, 0, 0, 0.5);  text-indent:20px; color:#fff">'+
+        '<span>'+storys[i].desc+'</span>'+
+        '</div></div>';
+        htmls += imgdiv;
+      }
+      htmls += '</div>';
+      return htmls;
+    }
+
+  var intervalID ;
+  var playIdx = 0;
+  var firstPlay = true;
+  function flyToNext(nextIdx){
+                 nextEntity = viewer.entities.values[nextIdx];
+                 viewer.flyTo(nextEntity);
+                 viewer.clock.currentTime = Cesium.JulianDate.fromIso8601(nextEntity.id);
+                 //定位entity
+                 viewer.selectedEntity = nextEntity; 
+               }
+  var createPlayBtn = function(){
+    var contaner = document.getElementById('toolbar1');
+   //动态设置样式
+    contaner.style.cssText = 
+        " position:absolute; " +
+        " overflow: visible;" +
+        " margin: 10px; " +
+        " top:10px; " + 
+        " left:10px; " ;
+        //创建工具条按钮
+          var button = document.createElement('button');
+            button.type = 'button';
+            button.id = "playBtn";
+            button.className = 'cesium-button';
+            button.onclick = function() {
+               console.log('相机平移函数');
+               //往下飞
+              if(firstPlay){
+                flyToNext(0);   
+                firstPlay = false;            
+              }else{
+                flyToNext(playIdx++);
+              }
+           
+              var len = viewer.entities.values.length;
+              if(button.textContent == "自动播放"){
+                button.textContent = "停止";
+                //播放
+                intervalID = setInterval(function(){
+                   playIdx++;
+                   if(playIdx < len){
+                    flyToNext(playIdx);
+                   }else{
+                    window.clearInterval(intervalID);
+                    button.textContent = "自动播放"
+                    playIdx = 0;
+                   }
+
+                },10000);
+              }else if(button.textContent == "停止"){
+                button.textContent = "自动播放";
+                //停止
+                window.clearInterval(intervalID);
+              }
+            }
+          
+            button.textContent = "自动播放";
+            contaner.appendChild(button);
+
+  }
+  </script>
+  
+</body>
+</html>

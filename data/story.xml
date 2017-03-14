@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StoryScene>
+<Node time="2015-02-26" place="新郑－初见" lon="113.658132" lat="34.792047" hgt="5000" thumb="images/thumb/1.jpg">
+	<Story img="images/1.JPG" desc="如果没有遇见你，我将会是在哪里？ 茫茫人海，我们就这样遇见了，缘分注定从这一刻开始。">
+	</Story>
+</Node>
+<Node time="2015-02-27" place="新郑－突然" lon="113.744279" lat="34.395266" hgt="5000" thumb="images/thumb/2.jpg">
+	<Story img="images/2.JPG" desc="事情总是来的那么突然，很突然的你辞职了，而下一站是这里。">
+	</Story>
+</Node>
+<Node time="2015-02-28" place="新郑－顺其自然" lon="113.770555" lat="34.402162" hgt="5000" thumb="images/thumb/3.jpg">
+	<Story img="images/3.JPG" desc="如果没有辞职，或许便不会一起放风筝，便不会第一次离你那么近，漫步西亚斯">
+	</Story>
+</Node>
+<Node time="2015-03-03" place="北京－爱开始的地方" lon="116.327841" lat="39.900676" hgt="5000" thumb="images/thumb/4.jpg">
+	<Story img="images/4.JPG" desc="收拾行囊，满怀期待，踏上旅途，一切尽在计划中！ 北京，我们来了！"> </Story>
+</Node>
+<Node time="2015-03-04" place="北京-表白" lon="116.399701" lat="40.022243" hgt="5000" thumb="images/thumb/6.jpg">
+	<Story img="images/5.JPG" desc="国家图书馆 森林公园 天虹 鸟巢 天安门 长安街 后海 ">
+	</Story>
+	<Story img="images/6.JPG" desc="美好的一天，成为永不忘却的纪念～天元一吻，情定终生！">
+	</Story>
+</Node>
+<Node time="2015-03-11" place="北京－care for you" lon="116.321306" lat="40.041165" hgt="5000" thumb="images/thumb/7.jpg">
+	<Story img="images/7.JPG" desc="那么可爱，那么萌"> </Story>
+</Node>
+<Node time="2015-03-15" place="北京－北海之约" lon="116.395473" lat="39.932449" hgt="5000" thumb="images/thumb/8.jpg">
+	<Story img="images/8.JPG" desc="来不及多看你一眼，就要分别，当初的选择不知是对是错"> </Story>
+</Node>
+<Node time="2015-03-22" place="北京－北大情" lon="116.316705" lat="40.000657" hgt="5000" thumb="images/thumb/9.jpg">
+	<Story img="images/9.JPG" desc="未名湖畔，杨柳垂堤，大连来的快递，你喜欢吗"> </Story>
+	<Story img="images/10.JPG" desc=""> </Story>
+	<Story img="images/11.JPG" desc=""> </Story>
+</Node>
+<Node time="2015-04-02" place="北京－生日快乐" lon="116.31912" lat="39.991778" hgt="5000" thumb="images/thumb/12.jpg">
+	<Story img="images/12.JPG" desc="生日快乐，我家欣，第一次为你过生日，似乎准备的不是那么充分，今后一定要一年比一年好"> </Story>
+</Node>
+<Node time="2015-04-18" place="大连－第一次" lon="121.538493" lat="38.865604" hgt="5000" thumb="images/thumb/13.jpg">
+	<Story img="images/13.JPG" desc="你来到我的城市，天气阴阴的，滨海路之行，意外之喜"> </Story>
+	<Story img="images/14.JPG" desc=""> </Story>
+	<Story img="images/15.JPG" desc=""> </Story>
+</Node>
+<Node time="2015-05-01" place="云阳－见家长" lon="112.742826" lat="33.447068" hgt="5000" thumb="images/thumb/16.jpg">
+	<Story img="images/16.JPG" desc="丈母娘的饭菜太可口了，以后来给咱们做饭吧"> </Story>
+	<Story img="images/17.JPG" desc=""> </Story>
+</Node>
+<Node time="2015-05-23" place="乌镇－第一次旅行" lon="120.492648" lat="30.755362" hgt="5000" thumb="images/thumb/18.jpg">
+	<Story img="images/18.JPG" desc="这应该算是我们第一次真正意义上的旅行吧，乌镇好美，欣欣也好美"> </Story>
+	<Story img="images/19.JPG" desc=""> </Story>
+	<Story img="images/20.JPG" desc=""> </Story>
+	<Story img="images/21.JPG" desc=""> </Story>
+	<Story img="images/22.JPG" desc=""> </Story>
+	<Story img="images/23.JPG" desc=""> </Story>
+	<Story img="images/24.JPG" desc=""> </Story>
+	<Story img="images/25.JPG" desc=""> </Story>
+	<Story img="images/26.JPG" desc=""> </Story>
+</Node>
+<Node time="2015-05-24" place="杭州－美丽西湖" lon="120.137468" lat="30.255543" hgt="5000" thumb="images/thumb/27.jpg">
+	<Story img="images/27.JPG" desc="来也匆匆，去也匆匆，杭州美景，真心不错，以后一定会再来的"> </Story>
+	<Story img="images/28.JPG" desc=""> </Story>
+	<Story img="images/29.JPG" desc=""> </Story>
+	<Story img="images/30.JPG" desc=""> </Story>
+	<Story img="images/31.JPG" desc=""> </Story>
+	<Story img="images/32.JPG" desc=""> </Story>
+	<Story img="images/33.JPG" desc=""> </Story>
+</Node>
+<Node time="2015-06-13" place="北京－北京的蓝天" lon="116.386343" lat="39.979084" hgt="5000" thumb="images/thumb/34.jpg">
+	<Story img="images/34.JPG" desc="北京的蓝天，那么美，思念无处不在，什么时候才能和欣欣同处一片蓝天下"> </Story>
+	<Story img="images/35.JPG" desc=""> </Story>
+	<Story img="images/36.JPG" desc=""> </Story>
+	<Story img="images/37.JPG" desc=""> </Story>
+	<Story img="images/38.JPG" desc=""> </Story>
+</Node>
+<Node time="2015-06-20" place="北京－南门烤肉" lon="116.419143" lat="39.889512" hgt="5000" thumb="images/thumb/39.jpg">
+	<Story img="images/39.JPG" desc="天坛"> </Story>
+	<Story img="images/40.JPG" desc="南门烤肉"> </Story>
+</Node>
+<Node time="2015-06-21" place="北戴河－第一次玩海" lon="119.495657" lat="39.819763" hgt="5000" thumb="images/thumb/41.jpg">
+	<Story img="images/41.JPG" desc="爱欣欣，欣欣身体不舒服还是下水了"> </Story>
+	<Story img="images/42.JPG" desc="你那么美，你那么美，美美美"> </Story>
+</Node>
+<Node time="2015-06-22" place="北戴河－第一次看海上日出" lon="119.543369" lat="39.827982" hgt="5000" thumb="images/thumb/43.jpg">
+	<Story img="images/43.JPG" desc="雾有点大，日出不是太完美，相信以后还有机会的"> </Story>
+	<Story img="images/44.JPG" desc=""> </Story>
+</Node>
+<Node time="2015-07-19" place="上海2015" lon="121.497516" lat="31.246473" hgt="5000" thumb="images/thumb/45_opt.jpg">
+	<Story img="images/45.JPG" desc="OneSwear 一生只有一次 ，定制我们钻戒故事。"> </Story>
+	<Story img="images/46.JPG" desc="说着一口吴依软语的姑娘，缓缓走过外滩"> </Story>
+	<Story img="images/47.JPG" desc="消失的旧时光二零一五，在回忆路上时间变得好慢"> </Story>
+	<Story img="images/48.JPG" desc="老街坊小弄堂 都是属于那年代白墙黑瓦 淡淡的忧伤"> </Story>
+</Node>
+</StoryScene>
